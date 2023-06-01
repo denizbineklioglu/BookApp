@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C4550E39-0362-47E1-AA35-34DB0A74EE7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "webUI", "webUI", "{5B5633A6-22C3-4683-A522-737DF6222519}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookApp.Mvc", "src\webUI\BookApp.Mvc\BookApp.Mvc.csproj", "{01369FAF-6ABD-4148-91AC-F0406A69E0F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01369FAF-6ABD-4148-91AC-F0406A69E0F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01369FAF-6ABD-4148-91AC-F0406A69E0F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01369FAF-6ABD-4148-91AC-F0406A69E0F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01369FAF-6ABD-4148-91AC-F0406A69E0F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B5633A6-22C3-4683-A522-737DF6222519} = {C4550E39-0362-47E1-AA35-34DB0A74EE7A}
+		{01369FAF-6ABD-4148-91AC-F0406A69E0F5} = {5B5633A6-22C3-4683-A522-737DF6222519}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {88560267-346A-4011-8E84-14CC560F6CC8}
+	EndGlobalSection
+EndGlobal
