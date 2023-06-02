@@ -59,7 +59,7 @@ namespace BookApp.Infrastructure.Repositories
 
 		public async Task UpdateAsync(Category entity)
 		{
-			_bookDbContext.Update(entity);
+			_bookDbContext.Categories.Update(entity);
 			await _bookDbContext.SaveChangesAsync();
 		}
 	}
