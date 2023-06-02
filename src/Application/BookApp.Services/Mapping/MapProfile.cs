@@ -14,6 +14,8 @@ namespace BookApp.Services.Mapping
 		public MapProfile()
 		{
 			CreateMap<CreateWriterRequest, Writer>();
+			CreateMap<AppUserRegisterRequest, AppUser>();
+			CreateMap<AppUserLoginRequest, AppUser>();
 		}
 	}
 }

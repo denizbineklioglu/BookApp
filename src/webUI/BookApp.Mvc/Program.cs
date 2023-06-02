@@ -14,6 +14,7 @@ builder.Services.AddScoped<IWriterRepository, EFWriterRepository>();
 builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
 builder.Services.AddScoped<IBookRepository, EFBookRepository>();
 builder.Services.AddScoped<IPublisherRepository, EFPublisherRepository>();
+
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
 var connectionString = builder.Configuration.GetConnectionString("db");

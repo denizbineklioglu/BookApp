@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookApp.Infrastructure.Repositories
 {
-	public interface IRepository<T> where T : class , IEntity, new()
+	public interface IRepository<T> where T : class , new()
 	{
 		Task CreateAsync(T entity);
 		Task DeleteAsync(int id);
