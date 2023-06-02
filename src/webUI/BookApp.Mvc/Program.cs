@@ -1,17 +1,24 @@
 using BookApp.Entities;
 using BookApp.Infrastructure.Context;
+using BookApp.Infrastructure.Repositories;
+using BookApp.Services;
+using BookApp.Services.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BookDbContext>();
+builder.Services.AddScoped<IWriterService, WriterService>();
+builder.Services.AddScoped<IWriterRepository, EFWriterRepository>();
+builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
+builder.Services.AddScoped<IBookRepository, EFBookRepository>();
+builder.Services.AddScoped<IPublisherRepository, EFPublisherRepository>();
+builder.Services.AddAutoMapper(typeof(MapProfile));
 
 var connectionString = builder.Configuration.GetConnectionString("db");
 builder.Services.AddDbContext<BookDbContext>(opt => opt.UseSqlServer(connectionString));
-
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BookDbContext>();
 
 var app = builder.Build();
 
@@ -27,7 +34,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

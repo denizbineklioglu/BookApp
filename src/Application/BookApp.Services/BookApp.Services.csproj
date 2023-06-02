@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\BookApp.Infrastructure\BookApp.Infrastructure.csproj" />
+    <ProjectReference Include="..\BookApp.DataTransferObjects\BookApp.DataTransferObjects.csproj" />
   </ItemGroup>
 
 </Project>

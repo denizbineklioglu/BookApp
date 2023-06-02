@@ -34,7 +34,7 @@ namespace BookApp.Infrastructure.Repositories
 
 		public IList<Writer> GetAll()
 		{
-			return _bookDbContext.Categories.ToList();
+			return _bookDbContext.Writers.ToList();
 		}
 
 		public async Task<IList<Writer>> GetAllAsync()

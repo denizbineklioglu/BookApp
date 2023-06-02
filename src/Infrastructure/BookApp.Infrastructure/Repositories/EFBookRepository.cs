@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace BookApp.Infrastructure.Repositories
 {
-	public class EfBookRepository : IBookRepository
+	public class EFBookRepository : IBookRepository
 	{
 		private readonly BookDbContext _bookDbContext;
 
-		public EfBookRepository(BookDbContext bookDbContext)
+		public EFBookRepository(BookDbContext bookDbContext)
 		{
 			_bookDbContext = bookDbContext;
 		}
