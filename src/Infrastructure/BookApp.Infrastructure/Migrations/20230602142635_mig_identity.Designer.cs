@@ -4,6 +4,7 @@ using BookApp.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookApp.Infrastructure.Migrations
 {
     [DbContext(typeof(BookDbContext))]
-    partial class BookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230602142635_mig_identity")]
+    partial class mig_identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,15 +197,15 @@ namespace BookApp.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
-                    b.Property<int>("AppUserID")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("OrderDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
                     b.HasKey("OrderID");
 
-                    b.HasIndex("AppUserID");
+                    b.HasIndex("UserID");
 
                     b.ToTable("Orders");
                 });
@@ -386,13 +389,13 @@ namespace BookApp.Infrastructure.Migrations
 
             modelBuilder.Entity("BookApp.Entities.Order", b =>
                 {
-                    b.HasOne("BookApp.Entities.AppUser", "AppUser")
+                    b.HasOne("BookApp.Entities.AppUser", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("AppUserID")
+                        .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AppUser");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

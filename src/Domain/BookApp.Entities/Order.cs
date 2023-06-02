@@ -12,7 +12,7 @@ namespace BookApp.Entities
 		[Key]
 		public int OrderID { get; set; }
         public DateTime? OrderDate { get; set; }
-        public int UserID { get; set; }
-        public User User { get; set; }
+        public int AppUserID { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }
