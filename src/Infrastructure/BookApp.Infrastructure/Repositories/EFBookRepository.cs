@@ -54,6 +54,7 @@ namespace BookApp.Infrastructure.Repositories
             var books = GetAll();
             var result = _bookDbContext.Books.Select(b => new BookListResponse
             {
+				BookID = b.BookID,
                 Name = b.Name,
                 Price = b.Price,
                 ImageUrl = b.ImageUrl,

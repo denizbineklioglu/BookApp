@@ -4,7 +4,9 @@
 }
 
 <h1>Kitaplar</h1>
-
+<br />
+<a class="btn btn-outline-success" href="/Book/CreateBook">Kitap Ekle</a>
+<br />
 <table class="table">
     <thead>
         <tr>
@@ -40,7 +42,7 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ImageUrl)
+                    <img style="height:70px; width:70px;" src="@item.ImageUrl" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.WriterName)
@@ -52,8 +54,8 @@
                     @Html.DisplayFor(modelItem => item.PublisherName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    <a class="btn btn-outline-primary" href="/Book/EditBook/@item.BookID">Düzenle</a>
+                    <a class="btn btn-outline-danger" href="/Book/DeleteBook/@item.BookID">Sil</a>                    
                 </td>
             </tr>
         }

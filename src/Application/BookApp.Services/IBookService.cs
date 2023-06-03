@@ -14,5 +14,8 @@ namespace BookApp.Services
 	{
 		Task CreateBookAsync(CreateBookRequest createBookRequest);
 		IEnumerable<BookListResponse> GetBookList();
+		Task DeleteBook(int id);
+		Task UpdateBookAsync(UpdateBookRequest updateBookRequest);
+		UpdateBookRequest TGetByIdUpdate(int id);
 	}
 }

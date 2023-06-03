@@ -1,10 +1,9 @@
-﻿@model BookApp.Entities.Book
+﻿@model BookApp.DataTransferObjects.Requests.UpdateBookRequest
 @{
-    ViewData["Title"] = "CreateBook";
+    ViewData["Title"] = "EditBook";
 }
 
-<h1>Kitap Ekle</h1>
-
+<h1>Kitabı Düzenle</h1>
 
 <div class="row">
     <div class="col-md-4">
@@ -28,7 +27,7 @@
             <div class="form-group">
                 <label asp-for="CategoryID" class="control-label">Kategori</label>
                 <select asp-for="CategoryID" class="form-control" asp-items="ViewBag.categories">
-                    <option hidden="" value="" disabled selected>Lütfen kategori seçin</option>
+                    <option hidden="" value="@Model.CategoryID" disabled selected>Lütfen kategori seçin</option>
                 </select>
                 <span asp-validation-for="CategoryID" class="text-danger"></span>
             </div> <br />
@@ -40,7 +39,7 @@
                 <span asp-validation-for="WriterID" class="text-danger"></span>
             </div> <br />
             <div class="form-group">
-                <label asp-for="PublisherID" class="control-label">Yayınevi</label>
+                <label asp-for="PublisherID" class="control-label">Kategori</label>
                 <select asp-for="PublisherID" class="form-control" asp-items="ViewBag.publishers">
                     <option hidden="" value="" disabled selected>Lütfen kategori seçin</option>
                 </select>
@@ -52,3 +51,4 @@
         </form>
     </div>
 </div>
+

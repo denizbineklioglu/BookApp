@@ -28,10 +28,28 @@ namespace BookApp.Services
             await _bookRepository.CreateAsync(book);
         }
 
+        public async Task DeleteBook(int id)
+        {
+            await _bookRepository.DeleteAsync(id);
+        }
+
         public IEnumerable<BookListResponse> GetBookList()
         {
             var books = _bookRepository.GetBookWithInclude();
             return books;
+        }
+
+        public UpdateBookRequest TGetByIdUpdate(int id)
+        {
+            var book = _bookRepository.GetById(id);
+            var result = _mapper.Map<UpdateBookRequest>(book);
+            return result;
+        }
+
+        public async Task UpdateBookAsync(UpdateBookRequest updateBookRequest)
+        {
+            var book = _mapper.Map<Book>(updateBookRequest);
+            await _bookRepository.UpdateAsync(book);
         }
     }
 }

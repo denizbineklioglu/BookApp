@@ -1,4 +1,5 @@
 ﻿using BookApp.DataTransferObjects.Requests;
+using BookApp.Entities;
 using BookApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -40,6 +41,33 @@ namespace BookApp.Mvc.Controllers
             if (ModelState.IsValid)
             {
                 await _bookService.CreateBookAsync(model);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+
+        public async Task<IActionResult> DeleteBook(int id)
+        {
+            await _bookService.DeleteBook(id);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult EditBook(int id)
+        {
+            ViewBag.categories = getCategoriesforSelectList();
+            ViewBag.writers = getWritersforSelectList();
+            ViewBag.publishers = getPublishersforSelectList();
+            var book = _bookService.TGetByIdUpdate(id);
+            return View(book);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditBook(UpdateBookRequest model)
+        {
+            if (ModelState.IsValid)
+            {
+                await _bookService.UpdateBookAsync(model);
                 return RedirectToAction("Index");
             }
             return View();
