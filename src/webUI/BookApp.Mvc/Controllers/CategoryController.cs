@@ -1,9 +1,11 @@
 ﻿using BookApp.Entities;
 using BookApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookApp.Mvc.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;

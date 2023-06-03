@@ -62,5 +62,10 @@ namespace BookApp.Mvc.Controllers
 
             return View();
         }
+
+        public IActionResult AccesDenied()
+        {
+            return View();
+        }
     }
 }

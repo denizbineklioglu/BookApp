@@ -3,6 +3,8 @@ using BookApp.Infrastructure.Context;
 using BookApp.Infrastructure.Repositories;
 using BookApp.Services;
 using BookApp.Services.Mapping;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.CodeAnalysis.Host.Mef;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +25,14 @@ builder.Services.AddAutoMapper(typeof(MapProfile));
 var connectionString = builder.Configuration.GetConnectionString("db");
 builder.Services.AddDbContext<BookDbContext>(opt => opt.UseSqlServer(connectionString));
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BookDbContext>();
+
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+				.AddCookie(opt =>
+				{
+					opt.LoginPath = "/User/Login";
+					opt.AccessDeniedPath = new PathString("/User/AccesDenied");
+				});
 
 var app = builder.Build();
 
