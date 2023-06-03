@@ -1,7 +1,40 @@
-﻿
+﻿@model IEnumerable<BookApp.Entities.Writer>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Indextesin kardeşim helal olsun başardın.</h1>
+<h1>Yazarlar</h1>
+
+<a class="btn btn-outline-success" href="/Writer/CreateWriter">Yazar Ekle</a>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" href="/Writer/UpdateWriter/@item.WriterID">Düzenle</a>
+                    <a class="btn btn-outline-danger" href="/Writer/DeleteWriter/@item.WriterID">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 

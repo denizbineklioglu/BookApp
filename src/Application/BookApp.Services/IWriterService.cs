@@ -13,5 +13,10 @@ namespace BookApp.Services
 	{
 		Task CreateWriterAsync(CreateWriterRequest createWriterRequest);
         IEnumerable<WriterDisplayResponse> GetWritersForList();
+		Task DeleteWriterAsync(int id);
+
+        UpdateWriterRequest GetByIdUpdate(int id);
+		Task UpdateWriterAsync(UpdateWriterRequest updateWriterRequest);
+		IEnumerable<Writer> GetAll();
     }
 }

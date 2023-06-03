@@ -15,7 +15,8 @@ namespace BookApp.Mvc.Controllers
 
 		public IActionResult Index()
 		{
-			return View();
+			var writers = _writerService.GetAll();
+			return View(writers);
 		}
 
 		public async Task<IActionResult> CreateWriter()
@@ -30,6 +31,29 @@ namespace BookApp.Mvc.Controllers
 			{
 				await _writerService.CreateWriterAsync(model);
 				return RedirectToAction("Index");
+			}
+			return View();
+		}
+
+		public async Task<IActionResult> DeleteWriter(int id)
+		{
+			await _writerService.DeleteWriterAsync(id);
+			return RedirectToAction("Index");
+		}
+
+		public IActionResult UpdateWriter(int id)
+		{
+			var writer = _writerService.GetByIdUpdate(id);
+			return View(writer);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> UpdateWriter(UpdateWriterRequest model)
+		{
+			if (ModelState.IsValid)
+			{
+				await _writerService.UpdateWriterAsync(model);
+				return RedirectToAction("Index");	
 			}
 			return View();
 		}

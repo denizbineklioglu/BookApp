@@ -22,8 +22,17 @@ namespace BookApp.Services.Mapping
 			CreateMap<Category, CategoryDisplayResponse>();
 			CreateMap<Writer, WriterDisplayResponse>();
 			CreateMap<Publisher, PublisherDisplayResponse>();
+
 			CreateMap<Book, UpdateBookRequest>();
 			CreateMap<UpdateBookRequest, Book>();
-		}
-	}
+
+            CreateMap<Writer, UpdateWriterRequest>();
+            CreateMap<UpdateWriterRequest, Writer>();
+
+            CreateMap<Publisher, UpdatePublisherRequest>();
+            CreateMap<UpdatePublisherRequest, Publisher>();
+
+
+        }
+    }
 }

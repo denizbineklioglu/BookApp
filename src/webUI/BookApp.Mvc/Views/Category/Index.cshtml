@@ -1,7 +1,37 @@
-﻿
+﻿@model IEnumerable<BookApp.Entities.Category> 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Kategori ekledin helal kankam</h1>
+<h1>Kategoriler</h1>
+<br />
+<a class="btn btn-outline-success" href="/Category/CreateCategory">Kategori Ekle</a>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" href="/Category/EditCategory/@item.CategoryID">Düzenle</a>
+                    <a class="btn btn-outline-danger" href="/Category/DeleteCategory/@item.CategoryID">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
 

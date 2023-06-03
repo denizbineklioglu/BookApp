@@ -1,0 +1,25 @@
+﻿@model BookApp.DataTransferObjects.Requests.UpdatePublisherRequest
+@{
+    ViewData["Title"] = "UpdatePublisher";
+}
+
+<h1>Yayınevi Düzenle</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdatePublisher">
+            <div class="form-group">
+                <input asp-for="PublisherID" hidden class="form-control" />
+                <span asp-validation-for="PublisherID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Kitap Adı</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Düzenle" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

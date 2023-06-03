@@ -1,5 +1,6 @@
 ﻿using BookApp.DataTransferObjects.Requests;
 using BookApp.DataTransferObjects.Responses;
+using BookApp.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,10 @@ namespace BookApp.Services
     {
         Task CreatePublisherAsync(CreatePublisherRequest createPublisherRequest);
         IEnumerable<PublisherDisplayResponse> GetPublishersForList();
+
+        IEnumerable<Publisher> GetAll();
+        Task DeletePublisherAsync(int id);
+        UpdatePublisherRequest GetByIdUpdate(int id);
+        Task UpdatePublisherAsync(UpdatePublisherRequest updatePublisherRequest);
     }
 }

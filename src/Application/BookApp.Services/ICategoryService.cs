@@ -13,5 +13,12 @@ namespace BookApp.Services
 	{
 		Task CreateCategoryAsync(Category category);
         IEnumerable<CategoryDisplayResponse> GetCategoriesForList();
+
+		IEnumerable<Category> GetAll();
+
+		Task DeleteCategoryAsync(int id);
+		Task UpdateCategotyAsync(Category category);
+
+		Category GetCategoryById(int id);
     }
 }

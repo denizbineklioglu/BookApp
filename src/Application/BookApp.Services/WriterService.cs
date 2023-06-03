@@ -28,11 +28,33 @@ namespace BookApp.Services
 			await _writerRepository.CreateAsync(writer);
 		}
 
+        public async Task DeleteWriterAsync(int id)
+        {
+            await _writerRepository.DeleteAsync(id);
+        }
+
+        public IEnumerable<Writer> GetAll()
+        {
+           return _writerRepository.GetAll();
+        }
+
+        public UpdateWriterRequest GetByIdUpdate(int id)
+        {
+			var writer = _writerRepository.GetById(id);
+			return _mapper.Map<UpdateWriterRequest>(writer);
+        }
+
         public IEnumerable<WriterDisplayResponse> GetWritersForList()
         {
 			var writers = _writerRepository.GetAll();
 			var response = _mapper.Map<IEnumerable<WriterDisplayResponse>>(writers);
 			return response;
+        }
+
+        public async Task UpdateWriterAsync(UpdateWriterRequest updateWriterRequest)
+        {
+			var writer = _mapper.Map<Writer>(updateWriterRequest);
+			await _writerRepository.UpdateAsync(writer);
         }
     }
 }

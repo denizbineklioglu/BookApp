@@ -1,7 +1,34 @@
-﻿
+﻿@model IEnumerable<BookApp.Entities.Publisher>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Yayın evi ekledin helal</h1>
+<h1>Yayınevleri</h1>
 
+<br />
+<a class="btn btn-outline-success" href="/Publisher/CreatePublisher">Yayınevi Ekle</a>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" href="/Publisher/UpdatePublisher/@item.PublisherID">Düzenle</a>
+                    <a class="btn btn-outline-danger" href="/Publisher/DeletePublisher/@item.PublisherID">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
