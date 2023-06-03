@@ -1,4 +1,5 @@
-﻿using BookApp.Entities;
+﻿using BookApp.DataTransferObjects.Requests;
+using BookApp.Entities;
 using BookApp.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,6 @@ namespace BookApp.Services
 {
 	public interface IBookService 
 	{
+		Task CreateBookAsync(CreateBookRequest createBookRequest);
 	}
 }

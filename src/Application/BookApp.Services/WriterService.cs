@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookApp.DataTransferObjects.Requests;
+using BookApp.DataTransferObjects.Responses;
 using BookApp.Entities;
 using BookApp.Infrastructure.Repositories;
 using System;
@@ -26,5 +27,12 @@ namespace BookApp.Services
 			var writer = _mapper.Map<Writer>(createWriterRequest);
 			await _writerRepository.CreateAsync(writer);
 		}
-	}
+
+        public IEnumerable<WriterDisplayResponse> GetWritersForList()
+        {
+			var writers = _writerRepository.GetAll();
+			var response = _mapper.Map<IEnumerable<WriterDisplayResponse>>(writers);
+			return response;
+        }
+    }
 }

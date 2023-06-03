@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookApp.DataTransferObjects.Requests;
+using BookApp.DataTransferObjects.Responses;
 using BookApp.Entities;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace BookApp.Services.Mapping
 			CreateMap<CreateWriterRequest, Writer>();
 			CreateMap<AppUserRegisterRequest, AppUser>();
 			CreateMap<AppUserLoginRequest, AppUser>();
+			CreateMap<CreatePublisherRequest, Publisher>();
+			CreateMap<CreateBookRequest, Book>();
+			CreateMap<Category, CategoryDisplayResponse>();
+			CreateMap<Writer, WriterDisplayResponse>();
+			CreateMap<Publisher, PublisherDisplayResponse>();
 		}
 	}
 }

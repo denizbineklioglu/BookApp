@@ -1,4 +1,5 @@
-﻿using BookApp.Entities;
+﻿using BookApp.DataTransferObjects.Responses;
+using BookApp.Entities;
 using BookApp.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,7 @@ namespace BookApp.Services
 {
 	public interface ICategoryService 
 	{
-	}
+		Task CreateCategoryAsync(Category category);
+        IEnumerable<CategoryDisplayResponse> GetCategoriesForList();
+    }
 }

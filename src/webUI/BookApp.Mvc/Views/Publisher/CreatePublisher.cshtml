@@ -1,0 +1,24 @@
+﻿@model BookApp.DataTransferObjects.Requests.CreatePublisherRequest
+@{
+    ViewData["Title"] = "CreatePublisher";
+}
+
+<h1>Yayınevi Ekle</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreatePublisher">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Yayınevi Adı</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div> <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
