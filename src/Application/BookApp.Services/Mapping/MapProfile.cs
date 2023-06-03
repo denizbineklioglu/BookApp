@@ -23,6 +23,7 @@ namespace BookApp.Services.Mapping
 			CreateMap<Writer, WriterDisplayResponse>();
 			CreateMap<Publisher, PublisherDisplayResponse>();
 			CreateMap<Book, UpdateBookRequest>();
+			CreateMap<UpdateBookRequest, Book>();
 		}
 	}
 }
