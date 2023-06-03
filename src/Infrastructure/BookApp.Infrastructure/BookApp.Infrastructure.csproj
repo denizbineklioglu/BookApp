@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Application\BookApp.DataTransferObjects\BookApp.DataTransferObjects.csproj" />
     <ProjectReference Include="..\..\Domain\BookApp.Entities\BookApp.Entities.csproj" />
   </ItemGroup>
 

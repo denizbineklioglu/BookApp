@@ -1,4 +1,5 @@
 ﻿using BookApp.DataTransferObjects.Requests;
+using BookApp.DataTransferObjects.Responses;
 using BookApp.Entities;
 using BookApp.Infrastructure.Repositories;
 using System;
@@ -12,5 +13,6 @@ namespace BookApp.Services
 	public interface IBookService 
 	{
 		Task CreateBookAsync(CreateBookRequest createBookRequest);
+		IEnumerable<BookListResponse> GetBookList();
 	}
 }

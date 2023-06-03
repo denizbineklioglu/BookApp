@@ -22,7 +22,8 @@ namespace BookApp.Mvc.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var books = _bookService.GetBookList();
+            return View(books);
         }
 
         public IActionResult CreateBook()

@@ -1,5 +1,7 @@
-﻿using BookApp.Entities;
+﻿using BookApp.DataTransferObjects.Responses;
+using BookApp.Entities;
 using BookApp.Infrastructure.Context;
+using BookApp.Infrastructure.Migrations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -47,7 +49,22 @@ namespace BookApp.Infrastructure.Repositories
 			return _bookDbContext.Books.Where(filter).ToList();
 		}
 
-		public Book? GetById(int id)
+        public  IList<BookListResponse> GetBookWithInclude()
+        {
+            var books = GetAll();
+            var result = _bookDbContext.Books.Select(b => new BookListResponse
+            {
+                Name = b.Name,
+                Price = b.Price,
+                ImageUrl = b.ImageUrl,
+                CategoryName = b.Category.Name,
+                PublisherName = b.Publisher.Name,
+                WriterName = b.Writer.FirstName + " " + b.Writer.LastName
+            }).ToList();
+            return result;
+        }
+
+        public Book? GetById(int id)
 		{
 			return _bookDbContext.Books.SingleOrDefault(b => b.BookID == id);
 		}
@@ -62,5 +79,5 @@ namespace BookApp.Infrastructure.Repositories
 			_bookDbContext.Books.Update(entity);
 			await _bookDbContext.SaveChangesAsync();
 		}
-	}
+    }
 }
