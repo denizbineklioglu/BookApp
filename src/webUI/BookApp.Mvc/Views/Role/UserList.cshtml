@@ -1,0 +1,30 @@
+﻿@model List<BookApp.Entities.AppUser>
+@{
+    ViewData["Title"] = "UserList";
+}
+
+<h1>Kullanıcı Listesi</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Kullanıcı Adı
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" href="/Role/AssignRole/@item.Id">ROL ATA</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
