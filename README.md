@@ -1,9 +1,4 @@
 # BookApp / Turkcell GYGY
-
-<h3> Projedeki tüm varlıkların CRUD işlemleri yapılmıştır. <br>
-      Login ve Register işlemleri Identity Kütüphanesi kullanılarak yapılmıştır.
-      Rol bazlı Authorization işlemi yapılmıştır.
- </h3
   
 
 ![Screenshot_1](https://github.com/denizbineklioglu/BookApp/assets/76698070/30c71cbb-6f7a-4c2d-9aa6-572d67a017b9)
