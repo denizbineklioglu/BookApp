@@ -17,5 +17,8 @@ namespace BookApp.Services
 		Task DeleteBook(int id);
 		Task UpdateBookAsync(UpdateBookRequest updateBookRequest);
 		UpdateBookRequest TGetByIdUpdate(int id);
-	}
+
+        IEnumerable<BookListResponse> GetBooksWithCategories(int id);
+
+    }
 }

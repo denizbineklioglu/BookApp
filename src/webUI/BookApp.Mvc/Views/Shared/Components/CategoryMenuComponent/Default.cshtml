@@ -1,0 +1,11 @@
+﻿@model IEnumerable<BookApp.Entities.Category>
+
+
+
+<ul class="list-group">
+    @foreach (var item in Model)
+    {
+        <a href="/Book/BookCategories/@item.CategoryID" style="text-decoration:none">
+        <li class="list-group-item">@item.Name</li></a>       
+    }
+</ul>

@@ -39,6 +39,11 @@ namespace BookApp.Services
             return books;
         }
 
+        public IEnumerable<BookListResponse> GetBooksWithCategories(int id)
+        {
+            return _bookRepository.GetBooksWithCategory(id);
+        }
+
         public UpdateBookRequest TGetByIdUpdate(int id)
         {
             var book = _bookRepository.GetById(id);

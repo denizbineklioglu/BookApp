@@ -49,6 +49,22 @@ namespace BookApp.Infrastructure.Repositories
 			return _bookDbContext.Books.Where(filter).ToList();
 		}
 
+        public IList<BookListResponse> GetBooksWithCategory(int id)
+        {
+			var books = _bookDbContext.Books.Where(b => b.CategoryID == id);
+			var result = books.Select(b => new BookListResponse
+			{
+				BookID = b.BookID,
+				Name = b.Name,
+				Price = b.Price,
+				ImageUrl = b.ImageUrl,
+				CategoryName = b.Category.Name,
+				PublisherName = b.Publisher.Name,
+				WriterName = b.Writer.FirstName + " " + b.Writer.LastName
+			}).ToList();
+			return result;
+        }
+
         public  IList<BookListResponse> GetBookWithInclude()
         {
             var books = GetAll();

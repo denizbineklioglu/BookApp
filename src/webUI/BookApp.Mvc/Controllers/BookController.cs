@@ -73,6 +73,14 @@ namespace BookApp.Mvc.Controllers
             return View();
         }
 
+        public IActionResult BookCategories(int id)
+        {
+            var books = _bookService.GetBooksWithCategories(id);
+            var c = _categoryService.GetCategoryById(id);
+            ViewBag.categoryName = c.Name;
+            return View(books);
+        }
+
         private IEnumerable<SelectListItem> getCategoriesforSelectList()
         {
             var categories = _categoryService.GetCategoriesForList().Select(c => new SelectListItem
