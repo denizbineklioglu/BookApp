@@ -4,61 +4,27 @@
 }
 
 <h1>Kitaplar</h1>
-<br />
-<a class="btn btn-outline-success" href="/Book/CreateBook">Kitap Ekle</a>
-<br />
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th> 
-            <th>
-                @Html.DisplayNameFor(model => model.WriterName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PublisherName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+
+<div class="container">
+    <div class="row m-4">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    <img style="height:70px; width:70px;" src="@item.ImageUrl" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WriterName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CategoryName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PublisherName)
-                </td>
-                <td>
-                    <a class="btn btn-outline-primary" href="/Book/EditBook/@item.BookID">Düzenle</a>
-                    <a class="btn btn-outline-danger" href="/Book/DeleteBook/@item.BookID">Sil</a>                    
-                </td>
-            </tr>
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="@item.ImageUrl" style="height:250px;width:250px;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">@item.WriterName</p>
+                        <p class="card-text">Yayınevi :@item.PublisherName</p>
+                        <p class="card-text">Türk : @item.CategoryName</p>
+                        <p class="card-text" style="font-size:30px;">@item.Price ₺</p>
+
+                        <a href="#" class="btn btn-primary">Sepete Ekle</a>
+                        <a href="/Book/BookDetail/@item.BookID" class="btn btn-outline-success">Detaylar</a>
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    </div>
+</div>
 

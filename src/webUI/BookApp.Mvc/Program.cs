@@ -6,6 +6,7 @@ using BookApp.Services.Mapping;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.CodeAnalysis.Host.Mef;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,17 +23,43 @@ builder.Services.AddScoped<IPublisherRepository, EFPublisherRepository>();
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
+builder.Services.AddSession(opt =>
+{
+    opt.IdleTimeout = TimeSpan.FromMinutes(10);
+});
+
 var connectionString = builder.Configuration.GetConnectionString("db");
 builder.Services.AddDbContext<BookDbContext>(opt => opt.UseSqlServer(connectionString));
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BookDbContext>();
 
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-				.AddCookie(opt =>
-				{
-					opt.LoginPath = "/User/Login";
-					opt.AccessDeniedPath = new PathString("/User/AccesDenied");
-				});
+
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    opt.LoginPath = new PathString("/User/Login");
+	opt.LogoutPath = new PathString("/User/LogOut");
+    opt.AccessDeniedPath = new PathString("/User/AccesDenied");
+
+	opt.Cookie = new()
+	{
+		Name = "IdentityCookie",
+		HttpOnly = true,
+		SecurePolicy = CookieSecurePolicy.Always
+	};
+    opt.SlidingExpiration = true;
+    opt.ExpireTimeSpan = TimeSpan.FromDays(30);
+});
+
+builder.Services.AddAuthentication();
+
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//				.AddCookie(opt =>
+//				{
+//					opt.LoginPath = "/User/Login";
+//					opt.LogoutPath = "/User/LogOut";
+//					opt.ReturnUrlParameter = "yonlendir";
+//					opt.AccessDeniedPath = "/User/AccesDenied";
+//				});
 
 var app = builder.Build();
 
@@ -46,6 +73,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 app.UseAuthentication();

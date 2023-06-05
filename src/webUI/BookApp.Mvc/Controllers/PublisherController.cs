@@ -1,6 +1,8 @@
 ﻿using BookApp.DataTransferObjects.Requests;
 using BookApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace BookApp.Mvc.Controllers
 {
@@ -34,7 +36,6 @@ namespace BookApp.Mvc.Controllers
             }
             return View();
         }
-
 
         public async Task<IActionResult> DeletePublisher(int id)
         {

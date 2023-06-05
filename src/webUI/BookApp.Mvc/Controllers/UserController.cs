@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookApp.Mvc.Controllers
 {
+
     public class UserController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -57,10 +58,16 @@ namespace BookApp.Mvc.Controllers
             if (result.Succeeded)
             {
                 TempData["UserName"] = model.UserName;
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Book");
             }
 
             return View();
+        }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login");
         }
 
         public IActionResult AccesDenied()
