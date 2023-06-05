@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using BookApp.DataTransferObjects.Requests;
 using BookApp.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookApp.Mvc.Controllers
 {
-
+    [AllowAnonymous]
     public class UserController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

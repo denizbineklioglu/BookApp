@@ -6,6 +6,7 @@ using System.Data;
 
 namespace BookApp.Mvc.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class PublisherController : Controller
     {
         private readonly IPublisherService _publisherService;

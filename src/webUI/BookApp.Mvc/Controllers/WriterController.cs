@@ -1,9 +1,11 @@
 ﻿using BookApp.DataTransferObjects.Requests;
 using BookApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookApp.Mvc.Controllers
 {
+	[Authorize(Roles = "Admin")]
 	public class WriterController : Controller
 	{
 		private readonly IWriterService _writerService;

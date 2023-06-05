@@ -23,14 +23,13 @@ namespace BookApp.Services.Mapping
 			CreateMap<Writer, WriterDisplayResponse>();
 			CreateMap<Publisher, PublisherDisplayResponse>();
 
-			CreateMap<Book, UpdateBookRequest>();
-			CreateMap<UpdateBookRequest, Book>();
+			CreateMap<Book, UpdateBookRequest>().ReverseMap();
 
-            CreateMap<Writer, UpdateWriterRequest>();
-            CreateMap<UpdateWriterRequest, Writer>();
+            CreateMap<Writer, UpdateWriterRequest>().ReverseMap();
 
-            CreateMap<Publisher, UpdatePublisherRequest>();
-            CreateMap<UpdatePublisherRequest, Publisher>();
+            CreateMap<Publisher, UpdatePublisherRequest>().ReverseMap();
+
+			CreateMap<BookListResponse, Book>();
 
 
         }

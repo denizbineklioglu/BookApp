@@ -20,5 +20,6 @@ namespace BookApp.Services
 
         IEnumerable<BookListResponse> GetBooksWithCategories(int id);
 
+        BookListResponse GetBook(int id);
     }
 }

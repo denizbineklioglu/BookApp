@@ -1,11 +1,13 @@
 ﻿using BookApp.DataTransferObjects.Requests;
 using BookApp.Entities;
 using BookApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BookApp.Mvc.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BookController : Controller
     {
         private readonly IBookService _bookService;
@@ -21,6 +23,7 @@ namespace BookApp.Mvc.Controllers
             _publisherService = publisherService;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var books = _bookService.GetBookList();
@@ -73,6 +76,7 @@ namespace BookApp.Mvc.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult BookCategories(int id)
         {
             var books = _bookService.GetBooksWithCategories(id);

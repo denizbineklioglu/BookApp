@@ -33,6 +33,12 @@ namespace BookApp.Services
             await _bookRepository.DeleteAsync(id);
         }
 
+        public BookListResponse GetBook(int id)
+        {
+            var book = _bookRepository.GetById(id);
+            return _mapper.Map<BookListResponse>(book);
+        }
+
         public IEnumerable<BookListResponse> GetBookList()
         {
             var books = _bookRepository.GetBookWithInclude();
