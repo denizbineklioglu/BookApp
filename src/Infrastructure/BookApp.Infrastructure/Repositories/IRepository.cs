@@ -14,12 +14,12 @@ namespace BookApp.Infrastructure.Repositories
 		Task DeleteAsync(int id);
 		Task UpdateAsync(T entity);
 
-		T? GetById(int id);
+		//T? GetById(int id);
 		Task<T?> GetByIdAsync(int id);
 
 		IList<T> GetAll();
 		Task<IList<T>> GetAllAsync();
 
-		IList<T> GetAllWithFilter(Expression<Func<T, bool>> filter);
+		Task<IList<T>> GetAllWithFilterAsync(Expression<Func<T, bool>> filter);
 	}
 }

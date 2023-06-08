@@ -32,24 +32,19 @@ namespace BookApp.Infrastructure.Repositories
 			await _bookDbContext.SaveChangesAsync();
 		}
 
-		public IList<Category> GetAll()
-		{
+        public IList<Category> GetAll()
+        {
 			return _bookDbContext.Categories.ToList();
-		}
+        }
 
-		public async Task<IList<Category>> GetAllAsync()
+        public async Task<IList<Category>> GetAllAsync()
 		{
 			return await _bookDbContext.Categories.ToListAsync();
 		}
 
-		public IList<Category> GetAllWithFilter(Expression<Func<Category, bool>> filter)
+		public async Task<IList<Category>> GetAllWithFilterAsync(Expression<Func<Category, bool>> filter)
 		{
-			return _bookDbContext.Categories.Where(filter).ToList();
-		}
-
-		public Category? GetById(int id)
-		{
-			return _bookDbContext.Categories.SingleOrDefault(c => c.CategoryID == id);
+			return await _bookDbContext.Categories.Where(filter).ToListAsync();
 		}
 
 		public async Task<Category?> GetByIdAsync(int id)

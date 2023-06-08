@@ -33,20 +33,20 @@ namespace BookApp.Services
             await _writerRepository.DeleteAsync(id);
         }
 
-        public IEnumerable<Writer> GetAll()
+        public async Task<IEnumerable<Writer>> GetAll()
         {
-           return _writerRepository.GetAll();
+           return await _writerRepository.GetAllAsync();
         }
 
-        public UpdateWriterRequest GetByIdUpdate(int id)
+        public async Task<UpdateWriterRequest> GetByIdUpdate(int id)
         {
-			var writer = _writerRepository.GetById(id);
+			var writer = await _writerRepository.GetByIdAsync(id);
 			return _mapper.Map<UpdateWriterRequest>(writer);
         }
 
         public IEnumerable<WriterDisplayResponse> GetWritersForList()
         {
-			var writers = _writerRepository.GetAll();
+			var writers =  _writerRepository.GetAll();
 			var response = _mapper.Map<IEnumerable<WriterDisplayResponse>>(writers);
 			return response;
         }

@@ -14,9 +14,9 @@ namespace BookApp.Services
         Task CreatePublisherAsync(CreatePublisherRequest createPublisherRequest);
         IEnumerable<PublisherDisplayResponse> GetPublishersForList();
 
-        IEnumerable<Publisher> GetAll();
+        Task<IEnumerable<Publisher>> GetAll();
         Task DeletePublisherAsync(int id);
-        UpdatePublisherRequest GetByIdUpdate(int id);
+        Task<UpdatePublisherRequest> GetByIdUpdate(int id);
         Task UpdatePublisherAsync(UpdatePublisherRequest updatePublisherRequest);
     }
 }

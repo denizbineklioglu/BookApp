@@ -13,13 +13,13 @@ namespace BookApp.Services
 	public interface IBookService 
 	{
 		Task CreateBookAsync(CreateBookRequest createBookRequest);
-		IEnumerable<BookListResponse> GetBookList();
+		Task<IEnumerable<BookListResponse>> GetBookList();
 		Task DeleteBook(int id);
 		Task UpdateBookAsync(UpdateBookRequest updateBookRequest);
-		UpdateBookRequest TGetByIdUpdate(int id);
+		Task<UpdateBookRequest> TGetByIdUpdate(int id);
 
         IEnumerable<BookListResponse> GetBooksWithCategories(int id);
 
-        BookListResponse GetBook(int id);
+        Task<BookListResponse> GetBook(int id);
     }
 }

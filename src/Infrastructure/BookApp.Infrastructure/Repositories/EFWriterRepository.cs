@@ -32,24 +32,19 @@ namespace BookApp.Infrastructure.Repositories
 			await _bookDbContext.SaveChangesAsync();
 		}
 
-		public IList<Writer> GetAll()
-		{
-			return _bookDbContext.Writers.ToList();
-		}
+        public IList<Writer> GetAll()
+        {
+            return _bookDbContext.Writers.ToList();
+        }
 
-		public async Task<IList<Writer>> GetAllAsync()
+        public async Task<IList<Writer>> GetAllAsync()
 		{
 			return await _bookDbContext.Writers.ToListAsync();
 		}
 
-		public IList<Writer> GetAllWithFilter(Expression<Func<Writer, bool>> filter)
+		public async Task<IList<Writer>> GetAllWithFilterAsync(Expression<Func<Writer, bool>> filter)
 		{
-			return _bookDbContext.Writers.Where(filter).ToList();
-		}
-
-		public Writer? GetById(int id)
-		{
-			return _bookDbContext.Writers.SingleOrDefault(c => c.WriterID == id);
+			return await _bookDbContext.Writers.Where(filter).ToListAsync();
 		}
 
 		public async Task<Writer?> GetByIdAsync(int id)

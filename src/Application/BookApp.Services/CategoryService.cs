@@ -32,21 +32,21 @@ namespace BookApp.Services
             await _categoryRepository.DeleteAsync(id);
         }
 
-        public IEnumerable<Category> GetAll()
+        public async Task<IEnumerable<Category>> GetAll()
         {
-            return _categoryRepository.GetAll();
+            return await _categoryRepository.GetAllAsync();
         }
 
         public IEnumerable<CategoryDisplayResponse> GetCategoriesForList()
         {
-            var items = _categoryRepository.GetAll();
+            var items =  _categoryRepository.GetAll();
             var response = _mapper.Map<IEnumerable<CategoryDisplayResponse>>(items);
             return response;
         }
 
-        public Category? GetCategoryById(int id)
+        public async Task<Category?> GetCategoryById(int id)
         {
-            return _categoryRepository.GetById(id);
+            return await _categoryRepository.GetByIdAsync(id);
         }
 
         public async Task UpdateCategotyAsync(Category category)

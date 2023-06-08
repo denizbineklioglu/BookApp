@@ -34,19 +34,19 @@ namespace BookApp.Infrastructure.Repositories
 			await _bookDbContext.SaveChangesAsync();
 		}
 
-		public IList<Book> GetAll()
-		{
-			return _bookDbContext.Books.ToList();
-		}
+        public IList<Book> GetAll()
+        {
+           return _bookDbContext.Books.ToList();
+        }
 
-		public async Task<IList<Book>> GetAllAsync()
+        public async Task<IList<Book>> GetAllAsync()
 		{
 			return await _bookDbContext.Books.ToListAsync();
 		}
 
-		public IList<Book> GetAllWithFilter(Expression<Func<Book, bool>> filter)
+		public async Task<IList<Book>> GetAllWithFilterAsync(Expression<Func<Book, bool>> filter)
 		{
-			return _bookDbContext.Books.Where(filter).ToList();
+			return await _bookDbContext.Books.Where(filter).ToListAsync();
 		}
 
         public IList<BookListResponse> GetBooksWithCategory(int id)
@@ -65,10 +65,10 @@ namespace BookApp.Infrastructure.Repositories
 			return result;
         }
 
-        public  IList<BookListResponse> GetBookWithInclude()
+        public  async Task<IList<BookListResponse>> GetBookWithInclude()
         {
-            var books = GetAll();
-            var result = _bookDbContext.Books.Select(b => new BookListResponse
+            var books = await GetAllAsync();
+            var result = await _bookDbContext.Books.Select(b => new BookListResponse
             {
 				BookID = b.BookID,
                 Name = b.Name,
@@ -77,14 +77,9 @@ namespace BookApp.Infrastructure.Repositories
                 CategoryName = b.Category.Name,
                 PublisherName = b.Publisher.Name,
                 WriterName = b.Writer.FirstName + " " + b.Writer.LastName
-            }).ToList();
+            }).ToListAsync();
             return result;
         }
-
-        public Book? GetById(int id)
-		{
-			return _bookDbContext.Books.SingleOrDefault(b => b.BookID == id);
-		}
 
 		public async Task<Book?> GetByIdAsync(int id)
 		{

@@ -33,15 +33,15 @@ namespace BookApp.Services
             await _bookRepository.DeleteAsync(id);
         }
 
-        public BookListResponse GetBook(int id)
+        public async Task<BookListResponse> GetBook(int id)
         {
-            var book = _bookRepository.GetById(id);
+            var book = await _bookRepository.GetByIdAsync(id);
             return _mapper.Map<BookListResponse>(book);
         }
 
-        public IEnumerable<BookListResponse> GetBookList()
+        public async Task<IEnumerable<BookListResponse>> GetBookList()
         {
-            var books = _bookRepository.GetBookWithInclude();
+            var books = await _bookRepository.GetBookWithInclude();
             return books;
         }
 
@@ -50,9 +50,9 @@ namespace BookApp.Services
             return _bookRepository.GetBooksWithCategory(id);
         }
 
-        public UpdateBookRequest TGetByIdUpdate(int id)
+        public async Task<UpdateBookRequest> TGetByIdUpdate(int id)
         {
-            var book = _bookRepository.GetById(id);
+            var book = await _bookRepository.GetByIdAsync(id);
             var result = _mapper.Map<UpdateBookRequest>(book);
             return result;
         }

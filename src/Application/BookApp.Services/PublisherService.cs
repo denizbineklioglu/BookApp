@@ -34,14 +34,14 @@ namespace BookApp.Services
             await _publisherRepository.DeleteAsync(id);
         }
 
-        public IEnumerable<Publisher> GetAll()
+        public async Task<IEnumerable<Publisher>> GetAll()
         {
-            return _publisherRepository.GetAll();
+            return await _publisherRepository.GetAllAsync();
         }
 
-        public UpdatePublisherRequest GetByIdUpdate(int id)
+        public async Task<UpdatePublisherRequest> GetByIdUpdate(int id)
         {
-            var publisher = _publisherRepository.GetById(id);
+            var publisher = await _publisherRepository.GetByIdAsync(id);
             return _mapper.Map<UpdatePublisherRequest>(publisher);
         }
 

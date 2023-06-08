@@ -77,17 +77,17 @@ namespace BookApp.Mvc.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult BookCategories(int id)
+        public async Task<IActionResult> BookCategories(int id)
         {
             var books = _bookService.GetBooksWithCategories(id);
-            var c = _categoryService.GetCategoryById(id);
+            var c = await _categoryService.GetCategoryById(id);
             ViewBag.categoryName = c.Name;
             return View(books);
         }
 
         private IEnumerable<SelectListItem> getCategoriesforSelectList()
         {
-            var categories = _categoryService.GetCategoriesForList().Select(c => new SelectListItem
+            var categories =  _categoryService.GetCategoriesForList().Select(c => new SelectListItem
             {
                 Text = c.Name,
                 Value = c.CategoryID.ToString()
@@ -107,7 +107,7 @@ namespace BookApp.Mvc.Controllers
 
         private IEnumerable<SelectListItem> getPublishersforSelectList()
         {
-            var publishers = _publisherService.GetPublishersForList().Select(p => new SelectListItem
+            var publishers =  _publisherService.GetPublishersForList().Select(p => new SelectListItem
             {
                 Text = p.Name,
                 Value = p.PublisherID.ToString()
