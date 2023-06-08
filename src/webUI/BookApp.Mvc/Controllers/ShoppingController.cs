@@ -22,9 +22,10 @@ namespace BookApp.Mvc.Controllers
             return View(bookCollection);
         }
 
-        public async Task<IActionResult> AddBook(int id)
+        
+        public IActionResult AddBook(int id)
         {
-            BookDisplayResponse book = await _bookService.GetBookForBasket(id);
+            BookDisplayResponse book =  _bookService.GetBookForBasket(id);
             var bookItem = new BookItem
             {
                 Book = book,

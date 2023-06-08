@@ -25,7 +25,7 @@ else
             @foreach (var bookItem in Model.BookItems)
             {
                         <tr>
-                            <td>@bookItem</td>
+                            <td>@bookItem.Book.Name</td>
                             <td>@bookItem.Book.Price</td>
                             <td>@bookItem.Quantity</td>
                             <td>@(bookItem.Quantity * bookItem.Book.Price)</td>

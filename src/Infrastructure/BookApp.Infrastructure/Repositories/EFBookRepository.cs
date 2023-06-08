@@ -49,12 +49,12 @@ namespace BookApp.Infrastructure.Repositories
 			return await _bookDbContext.Books.Where(filter).ToListAsync();
 		}
 
-        public IList<BookListResponse> GetBooksWithCategory(int id)
+        public IList<BookDisplayResponse> GetBooksWithCategory(int id)
         {
 			var books = _bookDbContext.Books.Where(b => b.CategoryID == id);
-			var result = books.Select(b => new BookListResponse
-			{
-				BookID = b.BookID,
+			var result = books.Select(b => new BookDisplayResponse
+            {
+				BookId = b.BookID,
 				Name = b.Name,
 				Price = b.Price,
 				ImageUrl = b.ImageUrl,
@@ -65,12 +65,12 @@ namespace BookApp.Infrastructure.Repositories
 			return result;
         }
 
-        public  async Task<IList<BookListResponse>> GetBookWithInclude()
+        public  async Task<IList<BookDisplayResponse>> GetBookWithInclude()
         {
             var books = await GetAllAsync();
-            var result = await _bookDbContext.Books.Select(b => new BookListResponse
+            var result = await _bookDbContext.Books.Select(b => new BookDisplayResponse
             {
-				BookID = b.BookID,
+				BookId = b.BookID,
                 Name = b.Name,
                 Price = b.Price,
                 ImageUrl = b.ImageUrl,
@@ -81,7 +81,12 @@ namespace BookApp.Infrastructure.Repositories
             return result;
         }
 
-		public async Task<Book?> GetByIdAsync(int id)
+        public  Book? GetById(int id)
+        {
+			return _bookDbContext.Books.SingleOrDefault(b => b.BookID == id);
+        }
+
+        public async Task<Book?> GetByIdAsync(int id)
 		{
 			return await _bookDbContext.Books.SingleOrDefaultAsync(b => b.BookID == id);
 		}

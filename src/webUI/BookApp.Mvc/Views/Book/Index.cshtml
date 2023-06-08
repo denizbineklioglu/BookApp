@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BookApp.DataTransferObjects.Responses.BookListResponse>
+﻿@model IEnumerable<BookApp.DataTransferObjects.Responses.BookDisplayResponse>
 @{
     ViewData["Title"] = "Index";
 }
@@ -19,8 +19,8 @@
                         <p class="card-text">Türk : @item.CategoryName</p>
                         <p class="card-text" style="font-size:30px;">@item.Price ₺</p>
 
-                        <a href="#" class="btn btn-primary">Sepete Ekle</a>
-                        <a href="/Book/BookDetail/@item.BookID" class="btn btn-outline-success">Detaylar</a>
+                        <button class="btn btn-primary basket" id="@item.BookId">Sepete Ekle</button>
+                        <a href="/Book/BookDetail/@item.BookId" class="btn btn-outline-success">Detaylar</a>
                     </div>
                 </div>
             </div>
@@ -28,3 +28,21 @@
     </div>
 </div>
 
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+            $('.basket').on('click', function () {
+                let id = $(this).attr('id');
+                $.ajax({
+                    url: '/Shopping/AddBook/' + id,
+                    type: 'GET',
+                    success: function (data) {
+                    }
+                });
+            });
+        });
+    </script>
+}

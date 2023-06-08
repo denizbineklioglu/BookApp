@@ -11,9 +11,11 @@ namespace BookApp.Infrastructure.Repositories
 {
 	public interface IBookRepository : IRepository<Book>
 	{
-		Task<IList<BookListResponse>> GetBookWithInclude();
+		Task<IList<BookDisplayResponse>> GetBookWithInclude();
 
-		IList<BookListResponse> GetBooksWithCategory(int id);
+		IList<BookDisplayResponse> GetBooksWithCategory(int id);
+
+		Book? GetById(int id);
 		
 	}
 }
