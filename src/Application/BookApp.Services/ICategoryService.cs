@@ -2,6 +2,7 @@
 using BookApp.Entities;
 using BookApp.Infrastructure.Repositories;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,5 +21,7 @@ namespace BookApp.Services
 		Task UpdateCategotyAsync(Category category);
 
 		Task<Category> GetCategoryById(int id);
+
+        IEnumerable<Category> GetCategoryForComponent();
     }
 }

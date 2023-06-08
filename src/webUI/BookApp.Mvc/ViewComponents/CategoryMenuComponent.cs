@@ -13,7 +13,7 @@ namespace BookApp.Mvc.ViewComponents
         }
         public IViewComponentResult Invoke()
         {
-            var categories = _categoryService.GetAll();
+            var categories =  _categoryService.GetCategoryForComponent();
             return View(categories);    
         }
     }

@@ -14,5 +14,6 @@ namespace BookApp.Infrastructure.Repositories
 		Task<IList<BookListResponse>> GetBookWithInclude();
 
 		IList<BookListResponse> GetBooksWithCategory(int id);
+		
 	}
 }

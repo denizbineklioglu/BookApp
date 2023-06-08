@@ -15,9 +15,9 @@ namespace BookApp.Mvc.Controllers
             _categoryService = categoryService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var categories = _categoryService.GetAll();
+            var categories = await _categoryService.GetAll();
             return View(categories);
         }
 
@@ -43,9 +43,9 @@ namespace BookApp.Mvc.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult EditCategory(int id)
+        public async Task<IActionResult> EditCategory(int id)
         {
-            var category = _categoryService.GetCategoryById(id);
+            var category = await _categoryService.GetCategoryById(id);
             return View(category);
         }
 

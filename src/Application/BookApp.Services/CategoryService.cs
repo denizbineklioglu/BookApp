@@ -49,6 +49,11 @@ namespace BookApp.Services
             return await _categoryRepository.GetByIdAsync(id);
         }
 
+        public IEnumerable<Category> GetCategoryForComponent()
+        {
+            return _categoryRepository.GetCategoryForComponent();
+        }
+
         public async Task UpdateCategotyAsync(Category category)
         {
             await _categoryRepository.UpdateAsync(category);

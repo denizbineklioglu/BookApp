@@ -16,9 +16,9 @@ namespace BookApp.Mvc.Controllers
             _publisherService = publisherService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var publishers = _publisherService.GetAll();
+            var publishers = await _publisherService.GetAll();
             return View(publishers);
         }
 
@@ -44,9 +44,9 @@ namespace BookApp.Mvc.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult UpdatePublisher(int id)
+        public async Task<IActionResult> UpdatePublisher(int id)
         {
-            var publisher = _publisherService.GetByIdUpdate(id);
+            var publisher =await _publisherService.GetByIdUpdate(id);
             return View(publisher);
         }
 

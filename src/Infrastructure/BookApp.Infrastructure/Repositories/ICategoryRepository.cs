@@ -9,5 +9,6 @@ namespace BookApp.Infrastructure.Repositories
 {
 	public interface ICategoryRepository : IRepository<Category>
 	{
+		IEnumerable<Category> GetCategoryForComponent();
 	}
 }

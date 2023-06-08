@@ -1,0 +1,42 @@
+﻿@model BookCollection
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Sepetiniz</h1>
+@if (Model.BookItems.Count == 0)
+{
+        <div class="alert alert-danger">
+            Sepetinizde kurs yok!
+        </div>
+}
+else
+{
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Kurs Adı</th>
+                    <th>Fiyatı</th>
+                    <th>Adet</th>
+                    <th>Ara Toplam</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var bookItem in Model.BookItems)
+            {
+                        <tr>
+                            <td>@bookItem</td>
+                            <td>@bookItem.Book.Price</td>
+                            <td>@bookItem.Quantity</td>
+                            <td>@(bookItem.Quantity * bookItem.Book.Price)</td>
+                        </tr>
+            }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">Toplam: @Model.TotalBookPrice()</td>
+                </tr>
+            </tfoot>
+        </table>
+}
+

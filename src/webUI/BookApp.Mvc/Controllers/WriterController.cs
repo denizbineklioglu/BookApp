@@ -15,9 +15,9 @@ namespace BookApp.Mvc.Controllers
 			_writerService = writerService;
 		}
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			var writers = _writerService.GetAll();
+			var writers = await _writerService.GetAll();
 			return View(writers);
 		}
 
@@ -43,9 +43,9 @@ namespace BookApp.Mvc.Controllers
 			return RedirectToAction("Index");
 		}
 
-		public IActionResult UpdateWriter(int id)
+		public async Task<IActionResult> UpdateWriter(int id)
 		{
-			var writer = _writerService.GetByIdUpdate(id);
+			var writer = await _writerService.GetByIdUpdate(id);
 			return View(writer);
 		}
 

@@ -21,5 +21,7 @@ namespace BookApp.Services
         IEnumerable<BookListResponse> GetBooksWithCategories(int id);
 
         Task<BookListResponse> GetBook(int id);
+
+		Task<BookDisplayResponse> GetBookForBasket(int id);
     }
 }

@@ -52,7 +52,12 @@ namespace BookApp.Infrastructure.Repositories
 			return await _bookDbContext.Categories.SingleOrDefaultAsync(c => c.CategoryID == id);
 		}
 
-		public async Task UpdateAsync(Category entity)
+        public IEnumerable<Category> GetCategoryForComponent()
+        {
+			return _bookDbContext.Categories.ToList();
+        }
+
+        public async Task UpdateAsync(Category entity)
 		{
 			_bookDbContext.Categories.Update(entity);
 			await _bookDbContext.SaveChangesAsync();

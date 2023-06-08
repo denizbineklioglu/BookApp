@@ -39,6 +39,12 @@ namespace BookApp.Services
             return _mapper.Map<BookListResponse>(book);
         }
 
+        public async Task<BookDisplayResponse> GetBookForBasket(int id)
+        {
+            var book = await _bookRepository.GetByIdAsync(id);
+            return _mapper.Map<BookDisplayResponse>(book);
+        }
+
         public async Task<IEnumerable<BookListResponse>> GetBookList()
         {
             var books = await _bookRepository.GetBookWithInclude();

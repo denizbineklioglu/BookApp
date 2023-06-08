@@ -30,7 +30,7 @@ namespace BookApp.Services.Mapping
             CreateMap<Publisher, UpdatePublisherRequest>().ReverseMap();
 
 			CreateMap<BookListResponse, Book>();
-
+            CreateMap<BookDisplayResponse, Book>();
 
         }
     }

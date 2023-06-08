@@ -24,9 +24,9 @@ namespace BookApp.Mvc.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var books = _bookService.GetBookList();
+            var books = await  _bookService.GetBookList();
             return View(books);
         }
 
