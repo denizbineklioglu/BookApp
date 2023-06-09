@@ -1,6 +1,8 @@
 using BookApp.Entities;
 using BookApp.Infrastructure.Context;
 using BookApp.Infrastructure.Repositories;
+using BookApp.Mvc.Extensions;
+using BookApp.Mvc.Models;
 using BookApp.Services;
 using BookApp.Services.Mapping;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -12,14 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IWriterService, WriterService>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IPublisherService, PublisherService>();
-builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddScoped<IWriterRepository, EFWriterRepository>();
-builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
-builder.Services.AddScoped<IBookRepository, EFBookRepository>();
-builder.Services.AddScoped<IPublisherRepository, EFPublisherRepository>();
+builder.Services.AddInjections();
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
